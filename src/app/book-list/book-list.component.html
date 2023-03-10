@@ -1,0 +1,19 @@
+<h2> Book List </h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Book Name </th>
+            <th> Book Author</th>
+            <th> Tag </th>
+            <th> Number of Pages </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let book of books" >
+            <td> {{book.bookName}} <td>
+            <td> {{book.bookAuthor}} <td>
+            <td> {{book.bookTag}} <td>
+            <td> {{book.bookPages}} <td>
+        </tr>
+    <tbody>
+</table>
