@@ -3,17 +3,17 @@
     <thead>
         <tr>
             <th> Book Name </th>
-            <th> Book Author</th>
-            <th> Tag </th>
+            <th> Book Author </th>
             <th> Number of Pages </th>
+            <th> Tag </th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor = "let book of books" >
-            <td> {{book.bookName}} <td>
-            <td> {{book.bookAuthor}} <td>
-            <td> {{book.bookTag}} <td>
-            <td> {{book.bookPages}} <td>
+            <td> {{book.bookName}} </td>
+            <td> {{book.bookAuthor}} </td>
+            <td> {{book.bookPages}} </td>
+            <td> {{book.bookTag}} </td>
         </tr>
-    <tbody>
+    </tbody>
 </table>

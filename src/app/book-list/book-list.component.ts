@@ -13,7 +13,14 @@ export class BookListComponent implements OnInit{
   constructor() { }
 
   ngOnInit(): void {
-      
+    this.books = [{
+      "id" : 1 ,
+      "bookName" :  "Meditations",
+      "bookAuthor" : "Marcus Aurelius",
+      "bookTag" : "Philosophy",
+      "bookPages" : 200
+    }
+  ]
   }
 
 }
