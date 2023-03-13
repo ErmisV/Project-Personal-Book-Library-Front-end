@@ -63,7 +63,8 @@
               "browserTarget": "angular-frontend-book-lib:build:production"
             },
             "development": {
-              "browserTarget": "angular-frontend-book-lib:build:development"
+              "browserTarget": "angular-frontend-book-lib:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
