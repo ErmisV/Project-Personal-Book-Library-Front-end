@@ -19,24 +19,26 @@ export class CreateBookComponent implements OnInit{
   }
   
   saveBook(){
-    this.bookService.createBook(this.book).subscribe (data => {
-      console.log(data)
-      this.goToBookList();
-    }, 
-    error => console.log(error));
+    this.bookService.createBook(this.book)
+    .subscribe({
+      next: (data) => {
+          console.log(data);
+          this.goToBookList();
+        }, 
+        error: (err) =>  console.log(err),
+      });
   }
   
   goToBookList(){
     this.router.navigate(['/books']);
   }
 
-
   onSubmit(){
     console.log(this.book);
     this.saveBook();
   }
-
-
   
-
 }
+
+
+
