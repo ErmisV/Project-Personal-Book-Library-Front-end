@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import { BookService } from '../book.service';
-import { Book } from '../book';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from '../book';
 
 
 @Component({
@@ -32,15 +32,14 @@ export class UpdateBookComponent implements OnInit{
   updateBook() {
     this.bookService.updateBook(this.id, this.book)
     .subscribe({
-      next: (data) => {
-      console.log(data);
-      this.book = new Book();
-      this.goToBookList();
-    }, error : (err) => console.log(err),
-  });
-
-}
-  
+        next: (data) => {
+          console.log(data);
+          this.book = new Book();
+          this.goToBookList();
+        },  
+        error : (err) => console.log(err),
+    });
+  }
 
   onSubmit(){
     this.updateBook();

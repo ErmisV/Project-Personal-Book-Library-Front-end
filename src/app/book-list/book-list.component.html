@@ -4,8 +4,6 @@
         <tr>
             <th> Book Name </th>
             <th> Book Author </th>
-            <th> Number of Pages </th>
-            <th> Tag </th>
             <th> Actions </th>
         </tr>
     </thead>
@@ -13,10 +11,11 @@
         <tr *ngFor = "let book of books" >
             <td> {{book.bookName}} </td>
             <td> {{book.bookAuthor}} </td>
-            <td> {{book.bookPages}} </td>
-            <td> {{book.bookTag}} </td>
             <td>
-                <button (click) = "updateBook(book.id)" class = "btn btn-info"> Update </button>
+                <button (click) = "detailsBook(book.id)" class = "btn btn-success"> View </button>
+                <button (click) = "updateBook(book.id)" class = "btn btn-info" style="margin-left: 10px"> Update </button>
+                <button (click) = "deleteBook(book.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete </button>
+                
             </td>
         </tr>
     </tbody>
