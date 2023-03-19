@@ -19,6 +19,9 @@ export class BookListComponent implements OnInit{
     this.getBooks();
   }
 
+  //Search Function
+  searchText = '';
+
   private getBooks(){
     this.bookService.getBookList().subscribe(data => {
         this.books = data;
@@ -42,5 +45,15 @@ export class BookListComponent implements OnInit{
   detailsBook(id: number){
     this.router.navigate(['book-details', id]);  
     }
+
+
+
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
+    console.log(this.searchText);
+  }
+
+  
+
 
 }

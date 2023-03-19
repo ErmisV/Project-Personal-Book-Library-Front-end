@@ -3,5 +3,7 @@ export class Book {
     bookName: string;
     bookAuthor: string;
     bookPages: number;
-    bookTag: string;
+    bookTags: Tags;
 }
+
+enum Tags { Financial, History, Literature, Philosophy, Psychology, Politics, Science }

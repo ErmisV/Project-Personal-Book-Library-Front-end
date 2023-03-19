@@ -1,0 +1,24 @@
+<div class="col-md-6 offset-md-3">
+<h3> Book Progress </h3>
+<div class="container">
+        
+    <input class= "form-control" type="text" [(ngModel)] = "searchText"  placeholder="Search by Book Name or Author">
+        
+    <table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Book Name </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let book of books | search: searchText" >
+            <td> {{book.bookName}} </td>
+            <td> 
+
+               
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</div>

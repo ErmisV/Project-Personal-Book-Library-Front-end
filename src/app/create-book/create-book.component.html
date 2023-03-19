@@ -19,12 +19,20 @@
         <label> Number of Pages </label>
         <input type="text" class="form-control" id = "bookPages"
             [(ngModel)] = "book.bookPages" name = "bookPages">
-    </div>
+    </div> 
 
     <div class="form-group">
-        <label> Book Tag </label>
-        <input type="text" class="form-control" id = "bookTag"
-            [(ngModel)] = "book.bookTag" name = "bookTag">
+        <label> Book Genre </label>
+        <select  class="form-control" id="bookTags" 
+        [(ngModel)] = "book.bookTags" name="bookTags">
+        <option value="0"> Financial </option>
+        <option value="1"> History </option>
+        <option value="2"> Literature </option>
+        <option value="3"> Philosophy </option>
+        <option value="4"> Psychology </option>
+        <option value="5"> Politics </option>
+        <option value="6"> Science </option>
+        </select>
     </div>
 
     <button class = "btn btn-success" type = "submit">Submit</button>

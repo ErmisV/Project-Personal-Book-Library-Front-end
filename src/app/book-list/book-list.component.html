@@ -1,5 +1,9 @@
 <h2> Book List </h2>
-<table class = "table table-striped">
+<div class="container">
+        
+    <input class= "form-control" type="text" [(ngModel)] = "searchText"  placeholder="Search by Book Name or Author">
+        
+    <table class = "table table-striped">
     <thead>
         <tr>
             <th> Book Name </th>
@@ -8,15 +12,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let book of books" >
+        <tr *ngFor = "let book of books | search: searchText" >
             <td> {{book.bookName}} </td>
             <td> {{book.bookAuthor}} </td>
             <td>
                 <button (click) = "detailsBook(book.id)" class = "btn btn-success"> View </button>
                 <button (click) = "updateBook(book.id)" class = "btn btn-info" style="margin-left: 10px"> Update </button>
                 <button (click) = "deleteBook(book.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete </button>
-                
             </td>
         </tr>
     </tbody>
-</table>
+    </table>
+</div>

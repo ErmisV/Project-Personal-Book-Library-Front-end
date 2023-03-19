@@ -8,6 +8,10 @@ import { BookListComponent } from './book-list/book-list.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipe } from './search.pipe';
+import { BookProgressComponent } from './book-progress/book-progress.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,13 +19,17 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BookListComponent,
     CreateBookComponent,
     UpdateBookComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    SearchPipe,
+    BookProgressComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
