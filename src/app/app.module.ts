@@ -12,6 +12,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchPipe } from './search.pipe';
 import { BookProgressComponent } from './book-progress/book-progress.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BookProgressUpdateComponent } from './book-progress-update/book-progress-update.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookDetailsComponent,
     SearchPipe,
     BookProgressComponent,
+    BookProgressUpdateComponent,
+    
   ],
   imports: [
     BrowserModule,

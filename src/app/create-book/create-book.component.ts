@@ -19,6 +19,7 @@ export class CreateBookComponent implements OnInit{
   }
   
   saveBook(){
+    this.book.bookReads = 0;
     this.bookService.createBook(this.book)
     .subscribe({
       next: (data) => {

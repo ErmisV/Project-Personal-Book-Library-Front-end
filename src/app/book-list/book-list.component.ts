@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
 import { Book } from '../book';
 import { BookService } from '../book.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -10,23 +10,30 @@ import { BookService } from '../book.service';
 })
 export class BookListComponent implements OnInit{
 
-  books: Book[];
+  books: Book [];
   
   constructor (private bookService: BookService,
-    private router: Router) { }
+    private router: Router){}
   
   ngOnInit(): void {
     this.getBooks();
   }
-
-  //Search Function
-  searchText = '';
 
   private getBooks(){
     this.bookService.getBookList().subscribe(data => {
         this.books = data;
     });
   }
+
+  //Search Function
+  searchText = '';
+
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
+    console.log(this.searchText);
+  }
+  
+  //Search Function Ends
 
   updateBook(id: number){
     this.router.navigate(['update-book', id]);  
@@ -45,15 +52,5 @@ export class BookListComponent implements OnInit{
   detailsBook(id: number){
     this.router.navigate(['book-details', id]);  
     }
-
-
-
-  onSearchTextEntered(searchValue: string){
-    this.searchText = searchValue;
-    console.log(this.searchText);
-  }
-
-  
-
 
 }

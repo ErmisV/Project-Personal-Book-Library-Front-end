@@ -1,9 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {ThemePalette} from '@angular/material/core';
-
+import { Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-book-progress',
@@ -12,12 +12,19 @@ import {ThemePalette} from '@angular/material/core';
 })
 export class BookProgressComponent implements OnInit{
 
+  id: number;
   books: Book[];
+  b: Book;
+  
+  bookTotal: Book;
+  
+  
+  constructor (private bookService: BookService,
+    private router: Router){}
 
-  constructor (private bookService: BookService){}
-
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.getBooks();
+
   }
 
   private getBooks(){
@@ -26,11 +33,54 @@ export class BookProgressComponent implements OnInit{
     });
   }
 
+  bookProgress(id:number){
+    
+    /*
+    this.bookService.getBookReadsById(id)
+    .subscribe((data: Book) => {
+      this.bookTotal = data;
+     console.log(this.bookTotal.bookPages);
+     console.log(this.bookTotal.bookReads);
+
+      // var b= new Book().deserialize()
+       });
+    */
+  }
+
+  //Search Function
+  searchText = '';
+
   onSearchTextEntered(searchValue: string){
     this.searchText = searchValue;
     console.log(this.searchText);
   }
 
-  searchText = '';
+  //Search Function Ends 
+
+  updateBookProgress(id: number){
+    this.router.navigate(['book-progress-update', id]);  
+  }
+
+   
+  goToUpdateShow(id: number){
+    this.router.navigate(['book-progress-update-show', id]);  
+    }
+  
 
 }
+
+/*
+this.bookService.getBookById(this.id)
+      .pipe(map(res => ({
+        bookPages: res.bookPages,
+        bookReads: res.bookReads
+      })))
+      .subscribe(well => console.log(well))
+      
+      
+      .subscribe({
+        next: (bookPages) => {res.bookPages = bookPages}
+      });
+      
+
+*/
