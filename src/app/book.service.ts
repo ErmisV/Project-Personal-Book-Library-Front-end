@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book, Viv } from './book';
 import { map, Observable } from 'rxjs';
+import { JsonPipe } from '@angular/common';
 
 const headerDict = {
   'Content-Type': 'application/json',
@@ -19,7 +20,9 @@ const requestOptions = {
 export class BookService {
 
   baseURL = "http://localhost:8080/api/v1/books";
-  
+  res:Viv
+  va: number;
+
   constructor(private http: HttpClient) { }
 
   createBook(book: Book): Observable <Object>{
@@ -36,13 +39,16 @@ export class BookService {
 
   //Weird Methods
 
-  getBookReadsById(id: number){
-    return this.http.get<Viv>(`${this.baseURL}/${id}`);
+  getBookReadsById(id: number) {
+    return this.http.get<Book>(`${this.baseURL}/${id}`)
   }
-
- 
-
   
+  /*
+  getPagesTotal():number {
+    return this.va
+  }
+  */
+
 
   //
   updateBook(id: number, book: Book): Observable <Object>{

@@ -14,8 +14,6 @@ export class BookProgressComponent implements OnInit{
 
   id: number;
   books: Book[];
-  b: Book;
-  
   bookTotal: Book;
   
   
@@ -35,16 +33,16 @@ export class BookProgressComponent implements OnInit{
 
   bookProgress(id:number){
     
-    /*
-    this.bookService.getBookReadsById(id)
+    
+    this.bookService.getBookById(id)
     .subscribe((data: Book) => {
       this.bookTotal = data;
-     console.log(this.bookTotal.bookPages);
-     console.log(this.bookTotal.bookReads);
-
-      // var b= new Book().deserialize()
-       });
-    */
+      console.log(this.bookTotal.bookPages);
+      console.log(this.bookTotal.bookReads);
+      console.log(this.bookTotal.bookProgress);
+      
+      });
+      
   }
 
   //Search Function
@@ -64,8 +62,7 @@ export class BookProgressComponent implements OnInit{
    
   goToUpdateShow(id: number){
     this.router.navigate(['book-progress-update-show', id]);  
-    }
-  
+  }
 
 }
 

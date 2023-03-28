@@ -5,8 +5,17 @@ export class Book {
     bookAuthor: string;
     bookPages: number;
     bookReads: number;
+    bookProgress: number;
     bookTags: Tags;
-
+    
+    /*
+    setPages(bookPages:number){
+        this.bookPages=bookPages;
+    }
+    getPages(): number{
+        return this.bookPages;
+    }
+    */
 }      
 export interface Viv {
   
@@ -18,6 +27,8 @@ export interface Viv {
      bookTags: Tags;
    
 }
+
+
 
 enum Tags { Financial, History, Literature, Philosophy, Psychology, Politics, Science }
 

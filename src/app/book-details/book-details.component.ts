@@ -15,8 +15,7 @@ export class BookDetailsComponent implements OnInit{
   
   id: number;
   book: Book;
-  viv: Viv;
-  
+
   constructor(private route: ActivatedRoute, private bookService: BookService){
 
   }
@@ -25,33 +24,26 @@ export class BookDetailsComponent implements OnInit{
     this.id = this.route.snapshot.params['id'];
     this.book = new Book();     
     this.bookService.getBookById(this.id)
+
+
       .subscribe({
-        next: (data) => {this.book = data}
+        next: (data) => {this.book = data},
       });
-      
+
       console.log(this.book)
       
-      this.viv = new Book(); 
-      this.bookService.getBookReadsById(this.id)
-      .subscribe({
-        next: (data) => {this.viv = data}
-      });
-
-      console.log(this.viv.bookName)
-
-
       /*
+      this.res = new Book();
       this.bookService.getBookReadsById(this.id)
-      .pipe(map((res: any) => res.json),
-        map(({id, bookName, bookAuthor, bookPages, bookReads, bookTags}) => new Viv(id, bookName, bookAuthor, bookPages, bookReads, bookTags)))
-        .subscribe(res => {this.what = res;});
-      
+      .subscribe(
+        data => {
+          console.log(data);
+          this.res=data;
+          this.va=this.res.bookProgress
+          console.log(this.va)
+        })
         */
-      
-      
-    
-      
-
-  }
+        
+      }
 
 }
