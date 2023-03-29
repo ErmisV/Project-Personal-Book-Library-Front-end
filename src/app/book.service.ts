@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Book, Viv } from './book';
+import { Book} from './book';
 import { map, Observable } from 'rxjs';
 import { JsonPipe } from '@angular/common';
 
@@ -10,17 +10,12 @@ const headerDict = {
   'Access-Control-Allow-Headers': 'Content-Type',
 }
 
-const requestOptions = {                                                                                                                                                                                 
-  headers: new Headers(headerDict), 
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
   baseURL = "http://localhost:8080/api/v1/books";
-  res:Viv
   va: number;
 
   constructor(private http: HttpClient) { }

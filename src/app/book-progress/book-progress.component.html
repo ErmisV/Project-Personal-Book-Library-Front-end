@@ -1,49 +1,190 @@
 <h3> Book Progress </h3>
 
-<!--
-<div class="form-container">
-    <div class="progress">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" 
-            [ngStyle]="{'width.%': width * 100}" [attr.aria-valuenow]="width" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+
+
+<div class="flex-container">
+    
+    <div class="flex-child left">
+
+            <div class="container">
+                <input class= "form-control" type="text" [(ngModel)] = "searchText"  placeholder="Search by Book Name or Author">
+            </div>
+            
+            <br>
+            
+            <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th> Book Name </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let book of books | search: searchText" >
+                    <td> {{book.bookName}} </td>
+                    <td>
+                        <button (click) = "updateBookProgress(book.id)" class = "btn btn-info"> Update </button>
+                        <button (click) = "buttonShow(book.id)" class=" btn btn-success" style="margin-left: 10px"> Show </button> 
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+                            
+            <!--
+            <div>        
+                About {{book.bookProgress}}% of the book has been read
+            </div>
+            -->
+
     </div>
-</div>
 
--->
+    <div class="flex-child right">
 
-<br>
-<br>
-<br>
-<div class="form-container">
+        <div class="container">
         
-    <input class= "form-control" type="text" [(ngModel)] = "searchText"  placeholder="Search by Book Name or Author">
-        
-    <table class = "table table-striped">
-    <thead>
-        <tr>
-            <th> Book Name </th>
-            <th> Actions </th>
-            <th> Progress </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let book of books | search: searchText" >
-            <td> {{book.bookName}} </td>
-            <td>
-                <button (click) = "updateBookProgress(book.id)" class = "btn btn-info"> Update </button>
-                <button (click) = "bookProgress(book.id)" class=" btn btn-success" style="margin-left: 10px"> Show </button> 
-            </td>
+            <div *ngIf="show">
+                <div [ngSwitch]="rat">
 
-            <td>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" 
-                    [ngStyle]="{'width.%': 50}" aria-valuemin="0" aria-valuemax="100"></div>   <!--  [attr.aria-valuenow]="50" ,    {{book.bookProgress}} --> 
+                    <div *ngSwitchCase="'final'">
+                        <div class="progress fin">
+                            <span class="progress-left">
+                                    <span class="progress-bar"></span>
+                                    <span class="fnf-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                                    <span class="progress-bar"></span>
+                                    <span class="fnf-bar"></span>
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>            
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'upper warm'">
+                        <div class="progress uw">
+                            <span class="progress-left">
+                                    <span class="progress-bar"></span>
+                                    <span class="now-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                                    <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>
+                        </div>
+                    </div>
+                
+                    <div *ngSwitchCase="'upper cold'">
+                        <div class="progress uc">
+                            <span class="progress-left">
+                                    <span class="progress-bar"></span>
+                                    <span class="now-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                                    <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'mid'">
+                        <div class="progress md">
+                            <span class="progress-left">
+                                    <span class="progress-bar"></span>
+                                    <span class="now-bar"></span> 
+                            </span>
+                            <span class="progress-right">
+                                    <span class="progress-bar"></span>
+                                    <span class="now-bar"></span> 
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>
+                        </div>
+                    </div>
+                    
+                    <div *ngSwitchCase="'low warm'">
+                        <div class="progress lw">
+                            <span class="progress-left">
+                                    <span class="progress-bar"></span>
+                                    <span class="now-bar"></span> 
+                            </span>
+                            <span class="progress-right">
+                                    <span class="progress-bar"></span>
+                                    <span class="now-bar"></span> 
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>
+                        </div>
+                    </div>
+            
+                    <div *ngSwitchCase="'low cold'">
+                        <div class="progress lc">
+                            <span class="progress-left">
+                                    <span class="progress-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                                    <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'none'">
+                        <div class="progress no">
+                            <span class="progress-left">
+                                    <span class="fnf-bar"></span>
+                            </span>
+                            <span class="progress-right">   
+                                    <span class="fnf-bar"></span>
+                            </span>
+                            <div class="progress-value">{{bookTotal.bookProgress}}%</div>
+                        </div>
+                    </div>
+                    
                 </div>
+            </div>  
+            
+        </div>
 
-            </td>
-                        
-        </tr>
-    </tbody>
-    </table>
+        <br>
+
+        <div class="container">
+            Book Reading status:
+            <div *ngIf="show">
+                <div [ngSwitch]="rat">
+
+                    <div *ngSwitchCase="'final'">
+                        <div>Book Finished</div>
+                    </div>
+
+                    <div *ngSwitchCase="'upper warm'">
+                        <div>Book Almost Finished</div>
+                    </div>
+
+                    <div *ngSwitchCase="'upper cold'">
+                        <div>More than half has been read</div>
+                    </div>
+
+                    <div *ngSwitchCase="'mid'">
+                        <div>Has read appoximately half</div>
+                    </div>
+
+                    <div *ngSwitchCase="'low warm'">
+                        <div>Making some progress</div>
+                    </div>
+
+                    <div *ngSwitchCase="'low cold'">
+                        <div>Just Started</div>
+                    </div>
+
+                    <div *ngSwitchCase="'none'">
+                        <div>Has not started reading yet</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
 </div>
+
+

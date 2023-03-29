@@ -2,8 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { Router} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+
 
 @Component({
   selector: 'app-book-progress',
@@ -12,11 +11,13 @@ import { map } from 'rxjs';
 })
 export class BookProgressComponent implements OnInit{
 
-  id: number;
   books: Book[];
   bookTotal: Book;
-  
-  
+  rating: string;
+  rat:string;
+  show:boolean=false;
+  showRealProg:number;
+
   constructor (private bookService: BookService,
     private router: Router){}
 
@@ -28,24 +29,38 @@ export class BookProgressComponent implements OnInit{
   private getBooks(){
     this.bookService.getBookList().subscribe(data => {
         this.books = data;
+        
     });
   }
 
-  bookProgress(id:number){
-    
-    
-    this.bookService.getBookById(id)
-    .subscribe((data: Book) => {
-      this.bookTotal = data;
-      console.log(this.bookTotal.bookPages);
-      console.log(this.bookTotal.bookReads);
-      console.log(this.bookTotal.bookProgress);
-      
-      });
-      
+  buttonShow(id:number){
+    this.show=false;
+    this.bookProgress(id);
   }
 
-  //Search Function
+  conditionShow(id:number){
+      return this.show=true;
+  }
+
+  bookProgress(id: number){
+      console.log(this.show)
+      this.bookService.getBookById(id)
+      .subscribe({
+        next:(data) => {
+          this.bookTotal = data;
+
+          this.rat=this.getRating(this.bookTotal.bookProgress)
+          this.showRealProg=this.bookTotal.bookProgress;
+          console.log(this.rat)
+
+          this.conditionShow(id)
+
+          console.log(this.show)
+        }
+      });
+      console.log(this.show)
+  }
+  
   searchText = '';
 
   onSearchTextEntered(searchValue: string){
@@ -53,12 +68,32 @@ export class BookProgressComponent implements OnInit{
     console.log(this.searchText);
   }
 
-  //Search Function Ends 
 
   updateBookProgress(id: number){
     this.router.navigate(['book-progress-update', id]);  
   }
 
+  getRating(prog: number): string {
+
+    if (prog===100){
+          this.rating="final";
+    }else if((prog>=80)&&(prog<100)){
+          this.rating="upper warm";
+    }else if((prog>60)&&(prog<80)){
+          this.rating="upper cold";
+    }else if((prog>=40)&&(prog<=60)){
+          this.rating="mid";
+    }else if((prog>20)&&(prog<40)){
+          this.rating="low warm";
+    }else if((prog>0)&&(prog<=20)){
+          this.rating="low cold";
+    }else{
+          this.rating="none";
+    }
+    
+    return this.rating
+
+  }
    
   goToUpdateShow(id: number){
     this.router.navigate(['book-progress-update-show', id]);  
@@ -66,18 +101,3 @@ export class BookProgressComponent implements OnInit{
 
 }
 
-/*
-this.bookService.getBookById(this.id)
-      .pipe(map(res => ({
-        bookPages: res.bookPages,
-        bookReads: res.bookReads
-      })))
-      .subscribe(well => console.log(well))
-      
-      
-      .subscribe({
-        next: (bookPages) => {res.bookPages = bookPages}
-      });
-      
-
-*/

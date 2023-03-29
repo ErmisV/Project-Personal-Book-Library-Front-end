@@ -17,16 +17,7 @@ export class Book {
     }
     */
 }      
-export interface Viv {
-  
-     id: number;
-     bookName: string;
-     bookAuthor: string;
-     bookPages: number;
-     bookReads: number;
-     bookTags: Tags;
-   
-}
+
 
 
 

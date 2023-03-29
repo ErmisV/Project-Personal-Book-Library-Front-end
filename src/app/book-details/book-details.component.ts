@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import { BookService } from '../book.service';
 import { ActivatedRoute } from '@angular/router';
-import { Book , Viv} from '../book';
+import { Book } from '../book';
 import { map } from 'rxjs';
 
 
@@ -27,7 +27,7 @@ export class BookDetailsComponent implements OnInit{
 
 
       .subscribe({
-        next: (data) => {this.book = data},
+        next: (data) => {this.book = data;}
       });
 
       console.log(this.book)
