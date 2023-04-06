@@ -13,6 +13,8 @@ import { SearchPipe } from './search.pipe';
 import { BookProgressComponent } from './book-progress/book-progress.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookProgressUpdateComponent } from './book-progress-update/book-progress-update.component';
+import { BookOrganizationComponent } from './book-organization/book-organization.component';
+import { YearCalendarModule } from '@iomechs/angular-year-calendar';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { BookProgressUpdateComponent } from './book-progress-update/book-progres
     SearchPipe,
     BookProgressComponent,
     BookProgressUpdateComponent,
+    BookOrganizationComponent,
     
   ],
   imports: [
@@ -32,7 +35,8 @@ import { BookProgressUpdateComponent } from './book-progress-update/book-progres
     HttpClientModule,
     FormsModule,
     Ng2SearchPipeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YearCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

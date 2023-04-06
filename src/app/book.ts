@@ -18,8 +18,5 @@ export class Book {
     */
 }      
 
-
-
-
 enum Tags { Financial, History, Literature, Philosophy, Psychology, Politics, Science }
 

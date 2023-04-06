@@ -6,6 +6,7 @@ import { BookProgressUpdateComponent } from './book-progress-update/book-progres
 import { BookProgressComponent } from './book-progress/book-progress.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { BookOrganizationComponent } from './book-organization/book-organization.component';
 
 const routes: Routes = [
   {path: 'books', component: BookListComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'book-details/:id', component: BookDetailsComponent},
   {path: 'book-progress', component:BookProgressComponent},
   {path: 'book-progress-update/:id', component:BookProgressUpdateComponent},
+  {path: 'book-organization', component:BookOrganizationComponent},
   {path: '', redirectTo: 'books' , pathMatch: 'full'}
 ];
 

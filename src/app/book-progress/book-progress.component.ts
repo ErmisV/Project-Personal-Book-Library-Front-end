@@ -17,7 +17,7 @@ export class BookProgressComponent implements OnInit{
   rat:string;
   show:boolean=false;
   showRealProg:number;
-
+  
   constructor (private bookService: BookService,
     private router: Router){}
 
