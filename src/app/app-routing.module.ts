@@ -7,6 +7,8 @@ import { BookProgressComponent } from './book-progress/book-progress.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
 import { BookOrganizationComponent } from './book-organization/book-organization.component';
+import { BookCommentComponent } from './book-comment/book-comment.component';
+import { BookCommentListComponent } from './book-comment-list/book-comment-list.component';
 
 const routes: Routes = [
   {path: 'books', component: BookListComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'book-progress', component:BookProgressComponent},
   {path: 'book-progress-update/:id', component:BookProgressUpdateComponent},
   {path: 'book-organization', component:BookOrganizationComponent},
+  {path: 'book-comment', component:BookCommentComponent},
+  {path: 'book-comment-list/:id', component:BookCommentListComponent},
   {path: '', redirectTo: 'books' , pathMatch: 'full'}
 ];
 

@@ -52,5 +52,6 @@ export class BookListComponent implements OnInit{
   detailsBook(id: number){
     this.router.navigate(['book-details', id]);  
     }
+    
 
 }

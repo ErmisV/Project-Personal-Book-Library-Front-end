@@ -1,0 +1,15 @@
+<div class="form-container" *ngFor = "let bookComment of bookComments" >
+    <h2> Comments List of this Book : {{bookComment.commentBookName}}</h2>
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-md-6"> Page of Comment : {{bookComment.commentBookPage}} </th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr style="height:150px" >
+                    <td> {{bookComment.commentText}} </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

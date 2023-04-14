@@ -1,0 +1,22 @@
+<h2> Book List </h2>
+<div class="form-container">
+        
+    <input class= "form-control" type="text" [(ngModel)] = "searchText"  placeholder="Search by Book Name or Author">
+        
+    <table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Book Name </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let book of books | search: searchText" >
+            <td> {{book.bookName}} </td>
+            <td>
+                <button (click) = "gotoComments(book.id)" class = "btn btn-success" style="margin-left: 10px"> Show Comments </button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>

@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookProgressUpdateComponent } from './book-progress-update/book-progress-update.component';
 import { BookOrganizationComponent } from './book-organization/book-organization.component';
 import { YearCalendarModule } from '@iomechs/angular-year-calendar';
+import { BookCommentComponent } from './book-comment/book-comment.component';
+import { BookCommentListComponent } from './book-comment-list/book-comment-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { YearCalendarModule } from '@iomechs/angular-year-calendar';
     BookProgressComponent,
     BookProgressUpdateComponent,
     BookOrganizationComponent,
-    
+    BookCommentComponent,
+    BookCommentListComponent
   ],
   imports: [
     BrowserModule,

@@ -31,18 +31,6 @@ export class BookDetailsComponent implements OnInit{
       });
 
       console.log(this.book)
-      
-      /*
-      this.res = new Book();
-      this.bookService.getBookReadsById(this.id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.res=data;
-          this.va=this.res.bookProgress
-          console.log(this.va)
-        })
-        */
         
       }
 

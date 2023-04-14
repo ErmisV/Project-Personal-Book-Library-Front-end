@@ -14,14 +14,15 @@ export class BookOrganizationComponent implements OnInit {
 
 myCalendarConfig: YCConfig;
 currentDate: Date;
+
 eventDayClickHandler($event: any) {
 throw new Error('Method not implemented.');
 }
+
 viewYearChangedHandler($event: any) {
 throw new Error('Method not implemented.');
 }
-isLoadingData: boolean;
 
- 
+isLoadingData: boolean;
 
 }

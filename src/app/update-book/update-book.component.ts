@@ -26,7 +26,7 @@ export class UpdateBookComponent implements OnInit{
       error: (err) => console.log(err),
     });
   }
-
+  
   updateBook() {
     this.bookService.updateBook(this.id, this.book)
     .subscribe({
