@@ -24,4 +24,11 @@ export class BookCommentService {
     return this.http.post(`${this.baseURL}/${id}`, comment);
   }
 
+  updateComment(bookId:number,id:number, bookComment: BookComment):Observable <Object>{
+    return this.http.put<BookComment>(`${this.baseURL}/${bookId}/${id}`, bookComment);
+  }
+
+  deleteComment(bookId:number, commentId:number):Observable <Object>{
+    return this.http.delete(`${this.baseURL}/${bookId}/${commentId}`);
+  }
 }

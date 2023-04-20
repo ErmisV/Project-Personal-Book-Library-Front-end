@@ -1,15 +1,51 @@
+<h2> Comments List of this Book : {{book.bookName}}</h2>
+
 <div class="form-container" *ngFor = "let bookComment of bookComments" >
-    <h2> Comments List of this Book : {{bookComment.commentBookName}}</h2>
-        <table class = "table table-striped">
-            <thead>
+   
+        <table class = "table table-bordered">
+            <thead class = "thead-dark">
                 <tr>
-                    <th class="col-md-6"> Page of Comment : {{bookComment.commentBookPage}} </th>
+                    <th class="col-md-4"> Comment ID: {{bookComment.commentId}} </th>
+                    <th class="col-md-4"> Page of Comment : {{bookComment.commentBookPage}} </th>
+                    <th class="col-md-2">
+                        <button (click) = "updateComment(bookComment.commentId)" class = "btn btn-info"> Update </button>
+                    </th>
+                    <th class="col-md-2">
+                        <button (click) = "deleteComment(bookComment.commentId)" class = "btn btn-danger" style="margin-left: 10px"> Delete </button>
+                    </th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody>
                 <tr style="height:150px" >
-                    <td> {{bookComment.commentText}} </td>
+                     {{bookComment.commentText}}
                 </tr>
             </tbody>
         </table>
+</div>
+
+<div class="form-container">
+    <button (click)="createComment(book.id)" class = "btn btn-success"> Add Comment </button>
+
+    <br>
+    
+    <div class="container">
+        <form (ngSubmit) = "onSubmit()">
+
+            <div class="form-group">
+                <label>  Page of the Comment</label>
+                <input type="text" class="form-control" id = "commentBookPage"
+                    [(ngModel)] = "bookComment.commentBookPage" name = "commentBookPage">
+            </div> 
+
+            <div class="form-group">
+                <label> Text of Comment </label>
+                <input type="text" class="form-control" id = "commentText"
+                    [(ngModel)] = "bookComment.commentText" name = "commentText">
+            </div> 
+
+            <button class = "btn btn-success" type = "submit">Submit</button>
+
+        </form>
+    </div>
+
 </div>
